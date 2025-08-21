@@ -7,6 +7,15 @@ Repositório para lembrar as principais funções do asyncio em Python com exemp
 ## Arquivos e Funcionalidades
 
 ### 1. `factorial.py` - Execução Paralela de Cálculos
+### 2. `tasks_paralele.py` - Tarefas Simultâneas  
+### 3. `temporizer.py` - Timer Básico Assíncrono
+### 4. `managing_subscriptions.py` - Sistema de Inscrições Concorrentes
+### 5. `notification.py` - Sistema de Notificações Assíncronas
+### 6. `orders.py` - Processamento de Pedidos Concorrente
+
+---
+
+### 1. `factorial.py` - Execução Paralela de Cálculos
 **Funções asyncio utilizadas:**
 - `asyncio.create_task()` - Cria tarefas assíncronas individuais
 - `asyncio.gather()` - Executa múltiplas tarefas em paralelo
@@ -50,6 +59,51 @@ Exemplo básico de um timer assíncrono. Demonstra o uso fundamental do `asyncio
 - O `asyncio.sleep()` é não bloqueante, permitindo que outras tarefas rodem durante a pausa
 - Base para entender como funciona a programação assíncrona
 
+### 4. `managing_subscriptions.py` - Sistema de Inscrições Concorrentes
+**Funções asyncio utilizadas:**
+- `asyncio.create_task()` - Cria tarefas individuais para cada inscrição
+- `asyncio.gather()` - Processa todas as inscrições simultaneamente
+- `asyncio.run()` - Executa o programa principal
+
+**Tipo de execução:** **Paralela/Concorrente**
+
+Simula um sistema de inscrições em cursos onde múltiplos usuários tentam se inscrever simultaneamente. O sistema verifica disponibilidade de vagas e processa todas as inscrições em paralelo.
+
+**Por que usar asyncio aqui?**
+- Processa múltiplas inscrições simultaneamente
+- Simula comportamento real de sistemas web com múltiplos usuários
+- Demonstra como lidar com recursos compartilhados (vagas limitadas) em ambiente concorrente
+
+### 5. `notification.py` - Sistema de Notificações Assíncronas
+**Funções asyncio utilizadas:**
+- `asyncio.create_task()` - Cria tarefa para cada notificação
+- `asyncio.gather()` - Envia todas as notificações simultaneamente
+- `asyncio.run()` - Inicia o sistema de notificações
+
+**Tipo de execução:** **Paralela/Concorrente**
+
+Sistema que envia notificações para múltiplos usuários considerando preferências individuais (VIP, notificações ativadas/desativadas). Todas as notificações são processadas simultaneamente.
+
+**Por que usar asyncio aqui?**
+- Envia notificações para todos os usuários ao mesmo tempo
+- Ideal para sistemas que precisam notificar muitos usuários rapidamente
+- Demonstra processamento condicional em ambiente assíncrono
+
+### 6. `orders.py` - Processamento de Pedidos Concorrente
+**Funções asyncio utilizadas:**
+- `asyncio.create_task()` - Cria tarefa para cada pedido
+- `asyncio.gather()` - Processa todos os pedidos simultaneamente
+- `asyncio.run()` - Executa o sistema de processamento
+
+**Tipo de execução:** **Paralela/Concorrente**
+
+Sistema de e-commerce que processa múltiplos pedidos simultaneamente, verificando pagamento e estoque para cada pedido. Simula o fluxo completo de validação de pedidos.
+
+**Por que usar asyncio aqui?**
+- Processa múltiplos pedidos ao mesmo tempo
+- Reduz tempo total de processamento em sistemas de alto volume
+- Demonstra validações múltiplas (pagamento + estoque) em ambiente assíncrono
+
 ## Conceitos Importantes
 
 ### Paralelo vs Concorrente
@@ -60,3 +114,5 @@ Exemplo básico de um timer assíncrono. Demonstra o uso fundamental do `asyncio
 1. **Performance**: Reduz tempo total de execução para operações I/O
 2. **Eficiência**: Melhor uso de recursos durante esperas
 3. **Escalabilidade**: Permite lidar com muitas operações simultaneamente
+4. **Sistemas Concorrentes**: Ideal para simular comportamentos de aplicações web reais
+5. **Processamento em Lote**: Excelente para processar múltiplos itens (pedidos, notificações, etc.)
